@@ -27,24 +27,22 @@ cd /home/cloudshell-user/aws-ecs/word_press_ecs/
 . ./set_up.sh
 ```
 
-```
+# cloud shell load data
 cloudshell - HOME="/home/cloudshell-user"
+```
 export MY_ENV_DIR="$HOME"
-cloud9 - HOME="/home/ec2-user"
-
-cd $MY_ENV_DIR/aws_mysql_bulkload/load_data
-. ./set_up.sh
-```
-
-cd /home/cloudshell-user/
-```
-export MY_ENV_DIR="$HOME/environment"
-echo $MY_ENV_DIR
-cd $MY_ENV_DIR
-git clone https://github.com/spring-guides/gs-batch-processing.git
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
 cd $MY_ENV_DIR/aws_mysql_bulkload/
 . ./set_up.sh
+```
+
+# cloud 9 install java
+```
+export MY_ENV_DIR="$HOME/environment"
+git clone https://github.com/spring-guides/gs-batch-processing.git
+echo $MY_ENV_DIR
+cd $MY_ENV_DIR/aws_mysql_bulkload/
+. ./set_up_java.sh
 ```
 
 
