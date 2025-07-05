@@ -1,1 +1,2 @@
-set_up.sh
+#!/bin/bash
+
