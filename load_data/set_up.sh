@@ -30,7 +30,8 @@ SECRET_JSON=$(aws secretsmanager get-secret-value \
 
 DB_USER=$(echo "$SECRET_JSON" | jq -r '.username')
 DB_PASSWORD=$(echo "$SECRET_JSON" | jq -r '.password')
-DB_NAME=$(echo "$SECRET_JSON" | jq -r '.dbname')
+# DB_NAME=$(echo "$SECRET_JSON" | jq -r '.dbname')
+DB_NAME=wordpress
 
 echo "✅ Retrieved credentials for user: $DB_USER, database: $DB_NAME"
 
