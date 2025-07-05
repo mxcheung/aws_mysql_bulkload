@@ -127,3 +127,25 @@ done
 cloud_user:~/environment/py2 $ wc -lc data.csv 
  1000001 61666714 data.csv
 ```
+
+
+# Load Data via cloud 9
+```
+cloud_user:~/environment $ export MY_ENV_DIR="$HOME/environment"
+cloud_user:~/environment $ git clone https://github.com/spring-guides/gs-batch-processing.git
+fatal: destination path 'gs-batch-processing' already exists and is not an empty directory.
+cloud_user:~/environment $ echo $MY_ENV_DIR
+/home/ec2-user/environment
+cloud_user:~/environment $ cd $MY_ENV_DIR/aws_mysql_bulkload/
+cloud_user:~/environment/aws_mysql_bulkload (main) $ . ./set_up.sh
+/home/ec2-user/environment
+✅ Creating data.csv
+1000001 /home/ec2-user/environment/data.csv
+🔍 Fetching RDS endpoint...
+✅ RDS endpoint: wordpress.cnsreg413u1n.us-east-1.rds.amazonaws.com
+🔐 Fetching database credentials from Secrets Manager...
+✅ Retrieved credentials for user: admin, database: wordpress
+📥 Loading /home/ec2-user/environment/data.csv into wordpress.my_table on wordpress.cnsreg413u1n.us-east-1.rds.amazonaws.com...
+✅ Data load complete.
+cloud_user:~/environment/aws_mysql_bulkload/load_data (main) $ 
+```
