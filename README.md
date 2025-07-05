@@ -27,6 +27,15 @@ cd /home/cloudshell-user/aws-ecs/word_press_ecs/
 . ./set_up.sh
 ```
 
+```
+cloudshell - HOME="/home/cloudshell-user"
+export MY_ENV_DIR="$HOME"
+cloud9 - HOME="/home/ec2-user"
+
+cd $MY_ENV_DIR/aws_mysql_bulkload/load_data
+. ./set_up.sh
+```
+
 cd /home/cloudshell-user/
 ```
 export MY_ENV_DIR="$HOME/environment"
