@@ -57,7 +57,7 @@ export MY_ENV_DIR="$HOME/environment"
 git clone https://github.com/spring-guides/gs-batch-processing.git
 echo $MY_ENV_DIR
 cd $MY_ENV_DIR/aws_mysql_bulkload/
-. ./set_up_java.sh
+. ./set_up.sh
 ```
 
 # cloud 9 install java
