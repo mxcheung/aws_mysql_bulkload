@@ -3,7 +3,7 @@ set -euo pipefail
 
 # === Configuration ===
 DB_INSTANCE_IDENTIFIER="wordpress"
-CSV_FILE="/home/ec2-user/environment/data.csv"
+CSV_FILE="$MY_ENV_DIR/data.csv"
 TABLE_NAME="my_table"
 
 # === Step 1: Get RDS endpoint ===
