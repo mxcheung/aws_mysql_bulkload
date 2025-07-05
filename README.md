@@ -27,13 +27,35 @@ cd /home/cloudshell-user/aws-ecs/word_press_ecs/
 . ./set_up.sh
 ```
 
-# cloud shell load data
+# cloud shell get access ket
 cloudshell - HOME="/home/cloudshell-user"
 ```
-export MY_ENV_DIR="$HOME"
-git clone https://github.com/mxcheung/aws_mysql_bulkload.git
+
+response=$(aws iam create-access-key --output json)
+
+# Write the response to a JSON file
+echo "$response" > access-key-response.json
+
+# Extract AccessKeyId and SecretAccessKey from the response file
+access_key_id=$(jq -r '.AccessKey.AccessKeyId' access-key-response.json)
+secret_access_key=$(jq -r '.AccessKey.SecretAccessKey' access-key-response.json)
+
+# Print the extracted values (optional)
+echo "AccessKeyId: $access_key_id"
+echo "SecretAccessKey: $secret_access_key"
+```
+
+
+# cloud 9 load data
+```
+export AWS_ACCESS_KEY_ID=your_access_key
+export AWS_SECRET_ACCESS_KEY=your_secret_key
+aws sts get-caller-identity
+export MY_ENV_DIR="$HOME/environment"
+git clone https://github.com/spring-guides/gs-batch-processing.git
+echo $MY_ENV_DIR
 cd $MY_ENV_DIR/aws_mysql_bulkload/
-. ./set_up.sh
+. ./set_up_java.sh
 ```
 
 # cloud 9 install java
