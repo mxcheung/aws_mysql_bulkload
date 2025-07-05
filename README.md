@@ -147,5 +147,14 @@ cloud_user:~/environment/aws_mysql_bulkload (main) $ . ./set_up.sh
 ✅ Retrieved credentials for user: admin, database: wordpress
 📥 Loading /home/ec2-user/environment/data.csv into wordpress.my_table on wordpress.cnsreg413u1n.us-east-1.rds.amazonaws.com...
 ✅ Data load complete.
-cloud_user:~/environment/aws_mysql_bulkload/load_data (main) $ 
+cloud_user:~/environment/aws_mysql_bulkload/load_data (main) $
+
+MySQL [wordpress]> select count(*) from my_table;
++----------+
+| count(*) |
++----------+
+|  1000000 |
++----------+
+1 row in set (0.094 sec)
+
 ```
