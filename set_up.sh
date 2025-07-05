@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-cd /home/ec2-user/aws_mysql_bulkload/make_data
+cd /home/cloudshell-user/aws_mysql_bulkload/make_data
 . ./set_up.sh
 
-cd /home/ec2-user/aws_mysql_bulkload/load_data
+cd /home/cloudshell-user/aws_mysql_bulkload/load_data
 . ./set_up.sh
 
 
