@@ -132,8 +132,6 @@ cloud_user:~/environment/py2 $ wc -lc data.csv
 # Load Data via cloud 9
 ```
 cloud_user:~/environment $ export MY_ENV_DIR="$HOME/environment"
-cloud_user:~/environment $ git clone https://github.com/spring-guides/gs-batch-processing.git
-fatal: destination path 'gs-batch-processing' already exists and is not an empty directory.
 cloud_user:~/environment $ echo $MY_ENV_DIR
 /home/ec2-user/environment
 cloud_user:~/environment $ cd $MY_ENV_DIR/aws_mysql_bulkload/
