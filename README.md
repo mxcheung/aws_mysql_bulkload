@@ -55,6 +55,6 @@ done
 # check data file
 
 ```
-cloud_user:~/environment $ wc -l data.csv 
-22088 data.csv
+cloud_user:~/environment/py2 $ wc -lc data.csv 
+ 1000001 61666714 data.csv
 ```
