@@ -27,7 +27,9 @@ cd /home/cloudshell-user/aws-ecs/word_press_ecs/
 . ./set_up.sh
 ```
 
-# cloud shell get access ket
+# cloud shell get access key
+No, you cannot currently access resources that are in your private VPC in this release of CloudShell.
+https://repost.aws/questions/QUUUbxosRsQH-wzS3DmpnvxQ/how-to-get-to-mysql-prompt-using-cloudshell
 cloudshell - HOME="/home/cloudshell-user"
 ```
 
