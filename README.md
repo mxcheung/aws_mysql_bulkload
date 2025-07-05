@@ -34,7 +34,7 @@ echo $MY_ENV_DIR
 cd $MY_ENV_DIR
 git clone https://github.com/spring-guides/gs-batch-processing.git
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
-cd /home/ec2-user/environment/aws_mysql_bulkload/
+cd $MY_ENV_DIR/aws_mysql_bulkload/
 . ./set_up.sh
 ```
 
