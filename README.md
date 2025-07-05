@@ -51,3 +51,10 @@ for i in $(seq 1 1000000); do
   echo "$i,User$i,user$i@example.com,$(date -d "$i days ago" '+%Y-%m-%d %H:%M:%S')" >> data.csv
 done
 ```
+
+# check data file
+
+```
+cloud_user:~/environment $ wc -l data.csv 
+22088 data.csv
+```
