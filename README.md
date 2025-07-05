@@ -28,6 +28,7 @@ cd /home/cloudshell-user/aws-ecs/word_press_ecs/
 ```
 
 ```
+cd /home/cloudshell-user/
 git clone https://github.com/spring-guides/gs-batch-processing.git
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
 cd /home/ec2-user/environment/aws_mysql_bulkload/
