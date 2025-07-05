@@ -10,4 +10,6 @@ RDS_ENDPOINT=$(aws rds describe-db-instances \
   --db-instance-identifier wordpress \
   --query 'DBInstances[0].Endpoint.Address' \
   --output text)
+
+echo $RDS_ENDPOINT
 ```
