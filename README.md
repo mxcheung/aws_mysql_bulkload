@@ -27,8 +27,11 @@ cd /home/cloudshell-user/aws-ecs/word_press_ecs/
 . ./set_up.sh
 ```
 
-```
 cd /home/cloudshell-user/
+```
+export MY_ENV_DIR="$HOME/environment"
+echo $MY_ENV_DIR
+cd $MY_ENV_DIR
 git clone https://github.com/spring-guides/gs-batch-processing.git
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
 cd /home/ec2-user/environment/aws_mysql_bulkload/
