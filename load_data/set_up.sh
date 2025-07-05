@@ -38,11 +38,7 @@ echo "✅ Retrieved credentials for user: $DB_USER, database: $DB_NAME"
 # === Step 3: Load CSV into MySQL table ===
 echo "📥 Loading $CSV_FILE into $DB_NAME.$TABLE_NAME on $DB_HOST..."
 
-mysql --local-infile=1 \
-  -h "$DB_HOST" \
-  -u "$DB_USER" \
-  -p"$DB_PASSWORD" \
-  "$DB_NAME" <<EOF
+mysql --local-infile=1   -h "$DB_HOST"   -u "$DB_USER"  -p"$DB_PASSWORD"  "$DB_NAME" <<EOF
 LOAD DATA LOCAL INFILE '$CSV_FILE'
 INTO TABLE $TABLE_NAME
 FIELDS TERMINATED BY ',' 
