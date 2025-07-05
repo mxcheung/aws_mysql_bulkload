@@ -1,39 +1,53 @@
 #!/bin/bash
+set -euo pipefail
 
-# Usage: ./load_data.sh data.csv mydb my_table your-db-endpoint your-username
+# === Configuration ===
+DB_INSTANCE_IDENTIFIER="wordpress"
+CSV_FILE="/home/ec2-user/environment/data.csv"
+TABLE_NAME="my_table"
 
-DATA_FILE=$1
-DATABASE=$2
-TABLE=$3
-HOST=$4
-USER=$5
+# === Step 1: Get RDS endpoint ===
+echo "🔍 Fetching RDS endpoint..."
+DB_HOST=$(aws rds describe-db-instances \
+  --db-instance-identifier "$DB_INSTANCE_IDENTIFIER" \
+  --query 'DBInstances[0].Endpoint.Address' \
+  --output text)
 
-if [[ -z "$DATA_FILE" || -z "$DATABASE" || -z "$TABLE" || -z "$HOST" || -z "$USER" ]]; then
-  echo "Usage: $0 <data_file.csv> <database> <table> <db_host> <db_user>"
-  exit 1
-fi
+echo "✅ RDS endpoint: $DB_HOST"
 
-if [[ ! -f "$DATA_FILE" ]]; then
-  echo "Data file '$DATA_FILE' not found!"
-  exit 2
-fi
+# === Step 2: Get DB credentials from Secrets Manager ===
+echo "🔐 Fetching database credentials from Secrets Manager..."
 
-echo -n "Enter password for MySQL user '$USER': "
-read -s PASSWORD
-echo
+SECRET_ARN=$(aws rds describe-db-instances \
+  --db-instance-identifier "$DB_INSTANCE_IDENTIFIER" \
+  --query 'DBInstances[0].MasterUserSecret.SecretArn' \
+  --output text)
 
-mysql --host="$HOST" --user="$USER" --password="$PASSWORD" --database="$DATABASE" --local-infile=1 -e "
-LOAD DATA LOCAL INFILE '$DATA_FILE'
-INTO TABLE $TABLE
+SECRET_JSON=$(aws secretsmanager get-secret-value \
+  --secret-id "$SECRET_ARN" \
+  --query 'SecretString' \
+  --output text)
+
+DB_USER=$(echo "$SECRET_JSON" | jq -r '.username')
+DB_PASSWORD=$(echo "$SECRET_JSON" | jq -r '.password')
+DB_NAME=$(echo "$SECRET_JSON" | jq -r '.dbname')
+
+echo "✅ Retrieved credentials for user: $DB_USER, database: $DB_NAME"
+
+# === Step 3: Load CSV into MySQL table ===
+echo "📥 Loading $CSV_FILE into $DB_NAME.$TABLE_NAME on $DB_HOST..."
+
+mysql --local-infile=1 \
+  -h "$DB_HOST" \
+  -u "$DB_USER" \
+  -p"$DB_PASSWORD" \
+  "$DB_NAME" <<EOF
+LOAD DATA LOCAL INFILE '$CSV_FILE'
+INTO TABLE $TABLE_NAME
 FIELDS TERMINATED BY ',' 
-ENCLOSED BY '\"' 
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
-IGNORE 1 LINES
-;
-"
+IGNORE 1 LINES;
+EOF
 
-if [[ $? -eq 0 ]]; then
-  echo "Data loaded successfully into $DATABASE.$TABLE"
-else
-  echo "Failed to load data."
-fi
+echo "✅ Data load complete."
