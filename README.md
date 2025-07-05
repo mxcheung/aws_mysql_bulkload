@@ -4,8 +4,8 @@ aws_mysql_bulkload
 # 
 ```
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
-cd /home/cloudshell-user/aws-ecs/word_press_ecs/user_credentials/
-
+cd /home/ec2-user/environment/aws_mysql_bulkload/
+. ./set_up.sh
 ```
 
 
