@@ -13,3 +13,7 @@ cd $MY_ENV_DIR/aws_mysql_bulkload/load_data
 
 cd $MY_ENV_DIR/aws_mysql_bulkload/row_count
 . ./set_up.sh
+
+cd $MY_ENV_DIR/aws_mysql_bulkload/spring-batch-processing
+. ./set_up.sh
+
