@@ -131,21 +131,26 @@ cloud_user:~/environment/py2 $ wc -lc data.csv
 
 # Load Data via cloud 9
 ```
-cloud_user:~/environment $ export MY_ENV_DIR="$HOME/environment"
-cloud_user:~/environment $ echo $MY_ENV_DIR
-/home/ec2-user/environment
 cloud_user:~/environment $ cd $MY_ENV_DIR/aws_mysql_bulkload/
 cloud_user:~/environment/aws_mysql_bulkload (main) $ . ./set_up.sh
 /home/ec2-user/environment
 ✅ Creating data.csv
 1000001 /home/ec2-user/environment/data.csv
 🔍 Fetching RDS endpoint...
-✅ RDS endpoint: wordpress.cnsreg413u1n.us-east-1.rds.amazonaws.com
+✅ RDS endpoint: wordpress.cbsg8t75jjai.us-east-1.rds.amazonaws.com
 🔐 Fetching database credentials from Secrets Manager...
 ✅ Retrieved credentials for user: admin, database: wordpress
-📥 Loading /home/ec2-user/environment/data.csv into wordpress.my_table on wordpress.cnsreg413u1n.us-east-1.rds.amazonaws.com...
+📥 Loading /home/ec2-user/environment/data.csv into wordpress.my_table on wordpress.cbsg8t75jjai.us-east-1.rds.amazonaws.com...
 ✅ Data load complete.
-cloud_user:~/environment/aws_mysql_bulkload/load_data (main) $
+🔍 Fetching RDS endpoint...
+✅ RDS endpoint: wordpress.cbsg8t75jjai.us-east-1.rds.amazonaws.com
+🔐 Fetching database credentials from Secrets Manager...
+✅ Retrieved credentials for user: admin, database: wordpress
+📥 Checing row count wordpress.my_table on wordpress.cbsg8t75jjai.us-east-1.rds.amazonaws.com...
+count(*)
+1000000
+✅ Check row count complete.
+cloud_user:~/environment/aws_mysql_bulkload/row_count (main) $ 
 
 MySQL [wordpress]> select count(*) from my_table;
 +----------+
