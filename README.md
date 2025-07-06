@@ -33,20 +33,6 @@ export AWS_PROFILE=cloud_user
 git clone https://github.com/mxcheung/aws-ecs.git
 export MY_ENV_DIR="$HOME/environment"
 
-response=$(aws iam create-access-key --output json)
-
-# Write the response to a JSON file
-echo "$response" > access-key-response.json
-
-# Extract AccessKeyId and SecretAccessKey from the response file
-access_key_id=$(jq -r '.AccessKey.AccessKeyId' access-key-response.json)
-secret_access_key=$(jq -r '.AccessKey.SecretAccessKey' access-key-response.json)
-
-# Print the extracted values (optional)
-echo "AccessKeyId: $access_key_id"
-echo "SecretAccessKey: $secret_access_key"
-
-
 cd $MY_ENV_DIR/aws-ecs/word_press_ecs/
 . ./set_up.sh
 
