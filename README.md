@@ -5,7 +5,7 @@ aws_mysql_bulkload
 
 ```
 git clone https://github.com/mxcheung/aws-ecs.git
-cd /home/cloudshell-user/aws-ecs/word_press_ecs/user_credentials/
+export MY_ENV_DIR="$HOME/environment"
 
 response=$(aws iam create-access-key --output json)
 
