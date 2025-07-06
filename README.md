@@ -54,7 +54,7 @@ export AWS_ACCESS_KEY_ID=your_access_key
 export AWS_SECRET_ACCESS_KEY=your_secret_key
 aws sts get-caller-identity
 export MY_ENV_DIR="$HOME/environment"
-git clone https://github.com/spring-guides/gs-batch-processing.git
+git clone https://github.com/mxcheung/aws_mysql_bulkload.git
 echo $MY_ENV_DIR
 cd $MY_ENV_DIR/aws_mysql_bulkload/
 . ./set_up.sh
