@@ -56,10 +56,6 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
-
-use wordpress;
-select count(*) from my_table;
-
 EOF
 
 echo "✅ Data load complete."
