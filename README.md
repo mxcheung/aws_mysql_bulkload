@@ -57,6 +57,8 @@ export MY_ENV_DIR="$HOME/environment"
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
 echo $MY_ENV_DIR
 cd $MY_ENV_DIR/aws_mysql_bulkload/
+source envvars.sh
+echo "$DB_HOST"
 . ./set_up.sh
 ```
 
