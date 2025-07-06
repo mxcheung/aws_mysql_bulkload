@@ -87,6 +87,18 @@ cloud_user:~/environment/gs-batch-processing/complete (main) $ java -jar ./targe
 2025-07-06T08:18:34.020Z  INFO 5923 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 ```
 
+```
+MySQL [wordpress]> select * from people;
++-----------+------------+-----------+
+| person_id | first_name | last_name |
++-----------+------------+-----------+
+|         1 | JILL       | DOE       |
+|         2 | JOE        | DOE       |
+|         3 | JUSTIN     | DOE       |
+|         4 | JANE       | DOE       |
+|         5 | JOHN       | DOE       |
+|         6 | JILL       | DOE       |
+```
 
 # Quick start
 Hosting a Wordpress Application on ECS Fargate with RDS, Parameter Store, and Secrets Manager
