@@ -69,6 +69,23 @@ cd $MY_ENV_DIR/aws_mysql_bulkload/
 . ./set_up_java.sh
 ```
 
+```
+cloud_user:~/environment/gs-batch-processing/complete (main) $ java -jar ./target/batch-processing-complete-0.0.1-SNAPSHOT.jar
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.3)
+
+2025-07-06T08:18:33.999Z  INFO 5923 --- [           main] c.e.b.JobCompletionNotificationListener  : Found <Person[firstName=JOHN, lastName=DOE]> in the database.
+2025-07-06T08:18:34.007Z  INFO 5923 --- [           main] o.s.b.c.l.s.TaskExecutorJobLauncher      : Job: [SimpleJob: [name=importUserJob]] completed with the following parameters: [{}] and the following status: [COMPLETED] in 109ms
+2025-07-06T08:18:34.015Z  INFO 5923 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-07-06T08:18:34.020Z  INFO 5923 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+```
 
 
 # Quick start
