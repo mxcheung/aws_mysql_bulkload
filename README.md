@@ -47,8 +47,6 @@ echo "AccessKeyId: $access_key_id"
 echo "SecretAccessKey: $secret_access_key"
 
 
-cd $MY_ENV_DIR/aws-ecs/word_press_ecs/user_credentials/
-. ./set_up.sh
 cd $MY_ENV_DIR/aws-ecs/word_press_ecs/
 . ./set_up.sh
 
