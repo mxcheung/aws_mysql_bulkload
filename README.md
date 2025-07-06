@@ -50,8 +50,8 @@ echo "SecretAccessKey: $secret_access_key"
 
 # cloud 9 load data
 ```
-export AWS_ACCESS_KEY_ID=your_access_key
-export AWS_SECRET_ACCESS_KEY=your_secret_key
+export AWS_ACCESS_KEY_ID=xxxxxxxxxxxxxxxxxxx
+export AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 aws sts get-caller-identity
 export MY_ENV_DIR="$HOME/environment"
 git clone https://github.com/mxcheung/aws_mysql_bulkload.git
