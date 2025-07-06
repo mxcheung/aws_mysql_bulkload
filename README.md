@@ -24,6 +24,12 @@ echo "SecretAccessKey: $secret_access_key"
 export AWS_ACCESS_KEY_ID=xxxxxxxxxxxxxxxxxxx
 export AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 aws sts get-caller-identity
+aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID --profile cloud_user
+aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY --profile cloud_user
+aws configure set region us-east-1 --profile cloud_user
+aws configure set output json --profile cloud_user
+export AWS_PROFILE=cloud_user
+
 git clone https://github.com/mxcheung/aws-ecs.git
 export MY_ENV_DIR="$HOME/environment"
 
