@@ -42,13 +42,6 @@ mysql --local-infile=1   -h "$DB_HOST"   -u "$DB_USER"  -p"$DB_PASSWORD"  "$DB_N
 
 use wordpress;
 
-CREATE TABLE my_table (
-  id INT PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(100),
-  created_at DATETIME
-);
-
 LOAD DATA LOCAL INFILE '$CSV_FILE'
 INTO TABLE $TABLE_NAME
 FIELDS TERMINATED BY ',' 
