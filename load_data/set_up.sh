@@ -40,6 +40,8 @@ echo "📥 Loading $CSV_FILE into $DB_NAME.$TABLE_NAME on $DB_HOST..."
 
 mysql --local-infile=1   -h "$DB_HOST"   -u "$DB_USER"  -p"$DB_PASSWORD"  "$DB_NAME" <<EOF
 
+use wordpress;
+
 CREATE TABLE my_table (
   id INT PRIMARY KEY,
   name VARCHAR(100),
@@ -53,6 +55,11 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
+
+
+use wordpress;
+select count(*) from my_table;
+
 EOF
 
 echo "✅ Data load complete."
