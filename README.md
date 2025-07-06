@@ -21,9 +21,9 @@ echo "AccessKeyId: $access_key_id"
 echo "SecretAccessKey: $secret_access_key"
 
 
-cd /home/cloudshell-user/aws-ecs/word_press_ecs/user_credentials/
+cd $MY_ENV_DIR/aws-ecs/word_press_ecs/user_credentials/
 . ./set_up.sh
-cd /home/cloudshell-user/aws-ecs/word_press_ecs/
+cd $MY_ENV_DIR/aws-ecs/word_press_ecs/
 . ./set_up.sh
 
 ```
