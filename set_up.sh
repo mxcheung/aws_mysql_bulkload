@@ -1,6 +1,10 @@
 #!/bin/bash
 
 echo $MY_ENV_DIR
+echo $AWS_ACCESS_KEY_ID
+
+cd $MY_ENV_DIR/aws-ecs/word_press_ecs/aws-profile
+. ./set_up.sh
 
 cd $MY_ENV_DIR/aws_mysql_bulkload/make_data
 . ./set_up.sh
