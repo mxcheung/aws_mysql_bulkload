@@ -32,6 +32,7 @@ export DB_USER=$(echo "$SECRET_JSON" | jq -r '.username')
 export DB_PASSWORD=$(echo "$SECRET_JSON" | jq -r '.password')
 # DB_NAME=$(echo "$SECRET_JSON" | jq -r '.dbname')
 DB_NAME=wordpress
-
+export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
  
