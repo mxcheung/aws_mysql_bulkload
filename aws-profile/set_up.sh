@@ -7,7 +7,7 @@ AWS_REGION="us-east-1"
 # Ensure AWS credentials are set in the environment
 if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
   echo "❌ AWS_ACCESS_KEY_ID and/or AWS_SECRET_ACCESS_KEY are not set in the environment."
-  exit 1
+  return 1
 fi
 
 # Create ~/.aws directory if it doesn't exist
