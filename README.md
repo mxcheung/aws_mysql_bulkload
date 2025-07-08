@@ -39,11 +39,15 @@ export AWS_ACCESS_KEY_ID="$access_key_id"
 export AWS_SECRET_ACCESS_KEY="$secret_access_key"
 echo "✅ Environment variables set."
 
+PROFILE_NAME="cloud_user"
+# AWS_REGION="us-east-1"
+
+
 # Optional: Save to AWS CLI named profile
-aws configure set aws_access_key_id "$access_key_id" --profile temp-user
-aws configure set aws_secret_access_key "$secret_access_key" --profile temp-user
-export AWS_PROFILE=temp-user
-echo "✅ AWS CLI profile 'temp-user' configured and active."
+aws configure set aws_access_key_id "$access_key_id" --profile $PROFILE_NAME
+aws configure set aws_secret_access_key "$secret_access_key" --profile $PROFILE_NAME
+export AWS_PROFILE=$PROFILE_NAME
+echo "✅ AWS CLI profile 'cloud-user' configured and active."
 ```
 
 
