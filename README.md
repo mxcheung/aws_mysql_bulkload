@@ -1,7 +1,52 @@
 # aws_mysql_bulkload
 aws_mysql_bulkload
 
-# 
+# 🔐 Step 1: In CloudShell – Create & Store Access Key in SSM
+```
+#!/bin/bash
+
+# Replace with your IAM username if needed
+IAM_USER=$(aws sts get-caller-identity --query Arn --output text | cut -d/ -f2)
+
+# Create access key
+response=$(aws iam create-access-key --user-name "$IAM_USER")
+
+# Extract keys
+access_key_id=$(echo "$response" | jq -r '.AccessKey.AccessKeyId')
+secret_access_key=$(echo "$response" | jq -r '.AccessKey.SecretAccessKey')
+
+# Save to SSM Parameter Store (encrypted)
+aws ssm put-parameter --name "/cloud9/aws_access_key_id" \
+  --value "$access_key_id" --type "SecureString" --overwrite
+
+aws ssm put-parameter --name "/cloud9/aws_secret_access_key" \
+  --value "$secret_access_key" --type "SecureString" --overwrite
+
+echo "✅ Access key saved securely in SSM."
+```
+
+# Step 2: In Cloud9 – Retrieve from SSM and Configure AWS CLI
+
+```
+#!/bin/bash
+
+# Get credentials from SSM
+access_key_id=$(aws ssm get-parameter --name "/cloud9/aws_access_key_id" --with-decryption --query "Parameter.Value" --output text)
+secret_access_key=$(aws ssm get-parameter --name "/cloud9/aws_secret_access_key" --with-decryption --query "Parameter.Value" --output text)
+
+# Export as environment variables
+export AWS_ACCESS_KEY_ID="$access_key_id"
+export AWS_SECRET_ACCESS_KEY="$secret_access_key"
+echo "✅ Environment variables set."
+
+# Optional: Save to AWS CLI named profile
+aws configure set aws_access_key_id "$access_key_id" --profile temp-user
+aws configure set aws_secret_access_key "$secret_access_key" --profile temp-user
+export AWS_PROFILE=temp-user
+echo "✅ AWS CLI profile 'temp-user' configured and active."
+```
+
+
 
 ```
 response=$(aws iam create-access-key --output json)
